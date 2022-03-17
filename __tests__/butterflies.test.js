@@ -2,7 +2,6 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
-const Butterfly = require('../lib/models/Butterfly');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -13,5 +12,18 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
-  it;
+  it('will create a butterfly', async () => {
+    const newButterfly = {
+      name: 'Brush-footed',
+      type: 'Nymphalidae',
+    };
+
+    const res = await request(app)
+      .post('/api/v1/butterflies')
+      .send(newButterfly);
+
+    console.log('res.body', res.body);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...newButterfly });
+  });
 });
