@@ -5,7 +5,7 @@ DROP TABLE IF EXISTS butterflies;
 DROP TABLE IF EXISTS cats;
 DROP TABLE IF EXISTS chickens;
 DROP TABLE IF EXISTS rocks;
--- DROP TABLE IF EXISTS flowers;
+DROP TABLE IF EXISTS flowers;
 
  CREATE TABLE cats (
      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -32,11 +32,11 @@ DROP TABLE IF EXISTS rocks;
      type TEXT NOT NULL
  );
 
---  CREATE TABLE flowers (
---      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---      name TEXT NOT NULL,
---      type TEXT NOT NULL
---  )
+ CREATE TABLE flowers (
+     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+     name TEXT NOT NULL,
+     type TEXT NOT NULL
+ );
 
  INSERT INTO 
     cats (name, age, favorite_toy)
@@ -62,8 +62,8 @@ DROP TABLE IF EXISTS rocks;
     ('limestone', 'sedimentary'),
     ('gniess', 'granite');
 
---  INSERT INTO 
---     flowers (name, type)
---  VALUES
---     ('calla lily', 'araceae')
---     ('sunflower', 'heliantheae')
+ INSERT INTO 
+    flowers (name, type)
+ VALUES
+    ('calla lily', 'araceae'),
+    ('sunflower', 'heliantheae');
