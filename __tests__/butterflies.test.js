@@ -35,4 +35,12 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('will get a single butterfly from the table', async () => {
+    const expected = { id: '2', name: 'monarch', type: 'danaus plexippus' };
+
+    const res = await request(app).get('/api/v1/butterflies/2');
+
+    expect(res.body).toEqual(expected);
+  });
 });
