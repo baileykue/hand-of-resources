@@ -2,17 +2,17 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 
 DROP TABLE IF EXISTS butterflies;
--- DROP TABLE IF EXISTS cats;
+DROP TABLE IF EXISTS cats;
 -- DROP TABLE IF EXISTS chickens;
 -- DROP TABLE IF EXISTS rocks;
 -- DROP TABLE IF EXISTS flowers;
 
---  CREATE TABLE cats (
---      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---      name TEXT NOT NULL,
---      age INT NOT NULL CHECK (age > 0),
---      favorite_toy TEXT
---  )
+ CREATE TABLE cats (
+     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+     name TEXT NOT NULL,
+     age INT NOT NULL CHECK (age > 0),
+     favorite_toy TEXT
+ );
 
  CREATE TABLE butterflies (
      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -38,11 +38,11 @@ DROP TABLE IF EXISTS butterflies;
 --      type TEXT NOT NULL
 --  )
 
---  INSERT INTO 
---     cats (name, age, favorite_toy)
---  VALUES
---     ('steven', 2, 'ball of yarn')
---     ('calico', 7, 'human feet')
+ INSERT INTO 
+    cats (name, age, favorite_toy)
+ VALUES
+    ('steven', 2, 'ball of yarn'),
+    ('calico', 7, 'human feet');
 
  INSERT INTO 
     butterflies (name, type)
