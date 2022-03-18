@@ -43,4 +43,18 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual(expected);
   });
+
+  it('will update a butterflies info', async () => {
+    const update = { name: 'Moss Elfin' };
+
+    const res = await request(app).patch('/api/v1/butterflies/1').send(update);
+
+    const expected = {
+      id: '1',
+      name: 'Moss Elfin',
+      type: 'papilio glaucus',
+    };
+
+    expect(res.body).toEqual(expected);
+  });
 });
