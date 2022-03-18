@@ -22,8 +22,6 @@ describe('hand-of-resources routes', () => {
       .post('/api/v1/butterflies')
       .send(newButterfly);
 
-    console.log('res.body', res.body);
-
     expect(res.body).toEqual({ id: expect.any(String), ...newButterfly });
   });
 });

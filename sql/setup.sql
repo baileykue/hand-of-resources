@@ -3,7 +3,7 @@
 
 DROP TABLE IF EXISTS butterflies;
 DROP TABLE IF EXISTS cats;
--- DROP TABLE IF EXISTS chickens;
+DROP TABLE IF EXISTS chickens;
 -- DROP TABLE IF EXISTS rocks;
 -- DROP TABLE IF EXISTS flowers;
 
@@ -20,11 +20,11 @@ DROP TABLE IF EXISTS cats;
      type TEXT NOT NULL
  );
 
---  CREATE TABLE chickens (
---      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
---      name TEXT NOT NULL,
---      color TEXT NOT NULL
---  )
+ CREATE TABLE chickens (
+     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+     name TEXT NOT NULL,
+     color TEXT NOT NULL
+ );
 
 --  CREATE TABLE rocks (
 --      id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -50,11 +50,11 @@ DROP TABLE IF EXISTS cats;
     ('tiger swallowtail', 'papilio glaucus'),
     ('monarch', 'danaus plexippus');
 
---  INSERT INTO 
---     chickens (name, color)
---  VALUES
---     ('silkie', 'white')
---     ('ameraucana', 'black-speckled')
+ INSERT INTO 
+    chickens (name, color)
+ VALUES
+    ('silkie', 'white'),
+    ('ameraucana', 'black-speckled');
 
 --  INSERT INTO 
 --     rocks (name, type)
