@@ -24,4 +24,15 @@ describe('hand-of-resources routes', () => {
 
     expect(res.body).toEqual({ id: expect.any(String), ...newButterfly });
   });
+
+  it('will get all butterflies', async () => {
+    const expected = [
+      { id: '1', name: 'tiger swallowtail', type: 'papilio glaucus' },
+      { id: '2', name: 'monarch', type: 'danaus plexippus' },
+    ];
+
+    const res = await request(app).get('/api/v1/butterflies');
+
+    expect(res.body).toEqual(expected);
+  });
 });
