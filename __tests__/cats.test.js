@@ -40,8 +40,20 @@ describe('hand-of-resources routes', () => {
       },
     ];
 
-    const res = await request.agent(app).get('/api/v1/cats');
+    const res = await request(app).get('/api/v1/cats');
 
+    expect(res.body).toEqual(expected);
+  });
+
+  it('should get a cat by its id', async () => {
+    const expected = {
+      id: '1',
+      name: 'steven',
+      age: 2,
+      favoriteToy: 'ball of yarn',
+    };
+
+    const res = await request(app).get('/api/v1/cats/1');
     expect(res.body).toEqual(expected);
   });
 });

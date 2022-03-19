@@ -61,7 +61,6 @@ describe('hand-of-resources routes', () => {
 
   it('will delete a butterfly', async () => {
     const res = await request(app).delete('/api/v1/butterflies/1');
-    console.log(res.body);
 
     const butterflies = await Butterfly.getAll();
     expect(butterflies).not.toContain(res.body);
