@@ -23,6 +23,17 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...newChicken });
   });
 
+  it('gets a list of chickens', async () => {
+    const expected = [
+      { id: '1', name: 'silkie', color: 'white' },
+      { id: '2', name: 'ameraucana', color: 'black-speckled' },
+    ];
+
+    const res = await request(app).get('/api/v1/chickens');
+
+    expect(res.body).toEqual(expected);
+  });
+
   it('should get a chickens info by id', async () => {
     const expected = { id: '1', name: 'silkie', color: 'white' };
 
