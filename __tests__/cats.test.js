@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Cat = require('../lib/models/Cat');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -70,5 +71,12 @@ describe('hand-of-resources routes', () => {
     };
 
     expect(res.body).toEqual(expected);
+  });
+
+  it('deletes a cat', async () => {
+    const res = await request(app).delete('/api/v1/cats/1');
+
+    const cats = await Cat.getAll();
+    expect(cats).not.toContain(res.body);
   });
 });
