@@ -56,4 +56,19 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get('/api/v1/cats/1');
     expect(res.body).toEqual(expected);
   });
+
+  it('should update the cats info', async () => {
+    const update = { age: 12 };
+
+    const res = await request(app).patch('/api/v1/cats/1').send(update);
+
+    const expected = {
+      id: '1',
+      name: 'steven',
+      age: 12,
+      favoriteToy: 'ball of yarn',
+    };
+
+    expect(res.body).toEqual(expected);
+  });
 });
