@@ -12,6 +12,18 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
+  it('should create a cat', async () => {
+    const newCat = {
+      name: 'Joey',
+      age: 4,
+      favoriteToy: 'laser pointer',
+    };
+
+    const res = await request(app).post('/api/v1/cats').send(newCat);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...newCat });
+  });
+
   it('should be able to gather all the cats', async () => {
     const expected = [
       {
