@@ -40,4 +40,14 @@ describe('hand-of-resources routes', () => {
     const res = await request(app).get('/api/v1/chickens/1');
     expect(res.body).toEqual(expected);
   });
+
+  it('should update the chickens info', async () => {
+    const update = { color: 'peach puff' };
+
+    const res = await request(app).patch('/api/v1/chickens/2').send(update);
+
+    const expected = { id: '2', name: 'ameraucana', color: 'peach puff' };
+
+    expect(res.body).toEqual(expected);
+  });
 });
