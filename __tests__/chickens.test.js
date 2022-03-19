@@ -12,6 +12,17 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
+  it('creates a new chicken', async () => {
+    const newChicken = {
+      name: 'plymoth rock',
+      color: 'silver tipped',
+    };
+
+    const res = await request(app).post('/api/v1/chickens').send(newChicken);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...newChicken });
+  });
+
   it('should get a chickens info by id', async () => {
     const expected = { id: '1', name: 'silkie', color: 'white' };
 
