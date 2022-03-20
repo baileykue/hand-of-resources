@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const Rock = require('../lib/models/Rock');
 
 describe('hand-of-resources routes', () => {
   beforeEach(() => {
@@ -49,5 +50,12 @@ describe('hand-of-resources routes', () => {
     const expected = { id: '2', name: 'sandstone', type: 'sedimentary' };
 
     expect(res.body).toEqual(expected);
+  });
+
+  it('should be able to delete a rock', async () => {
+    const res = await request(app).delete('/api/v1/rocks/1');
+
+    const flowers = await Rock.getAll();
+    expect(flowers).not.toContain(res.body);
   });
 });
