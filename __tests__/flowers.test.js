@@ -24,6 +24,17 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...newFlower });
   });
 
+  it('gets a list of flowers', async () => {
+    const expected = [
+      { id: '1', name: 'calla lily', type: 'araceae' },
+      { id: '2', name: 'sunflower', type: 'heliantheae' },
+    ];
+
+    const res = await request(app).get('/api/v1/flowers');
+
+    expect(res.body).toEqual(expected);
+  });
+
   it('should be able to delete a flower', async () => {
     const res = await request(app).delete('/api/v1/flowers/1');
 
