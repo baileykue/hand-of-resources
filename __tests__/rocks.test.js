@@ -34,6 +34,13 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('should get a rocks info by id', async () => {
+    const expected = { id: '2', name: 'gniess', type: 'granite' };
+
+    const res = await request(app).get('/api/v1/rocks/2');
+    expect(res.body).toEqual(expected);
+  });
+
   it('updates a rocks info by id', async () => {
     const update = { name: 'sandstone', type: 'sedimentary' };
 
