@@ -13,6 +13,17 @@ describe('hand-of-resources routes', () => {
     pool.end();
   });
 
+  it('creates a new flower', async () => {
+    const newFlower = {
+      name: 'calla lily',
+      type: 'araceae',
+    };
+
+    const res = await request(app).post('/api/v1/flowers').send(newFlower);
+
+    expect(res.body).toEqual({ id: expect.any(String), ...newFlower });
+  });
+
   it('should be able to delete a flower', async () => {
     const res = await request(app).delete('/api/v1/flowers/1');
 
