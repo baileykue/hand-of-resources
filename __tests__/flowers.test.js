@@ -42,6 +42,20 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual(expected);
   });
 
+  it('should update the flowers info', async () => {
+    const update = { name: 'the sunny flower with seeds' };
+
+    const res = await request(app).patch('/api/v1/flowers/2').send(update);
+
+    const expected = {
+      id: '2',
+      name: 'the sunny flower with seeds',
+      type: 'heliantheae',
+    };
+
+    expect(res.body).toEqual(expected);
+  });
+
   it('should be able to delete a flower', async () => {
     const res = await request(app).delete('/api/v1/flowers/1');
 
