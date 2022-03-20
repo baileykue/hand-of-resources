@@ -23,6 +23,17 @@ describe('hand-of-resources routes', () => {
     expect(res.body).toEqual({ id: expect.any(String), ...newRock });
   });
 
+  it('gets a list of rocks', async () => {
+    const expected = [
+      { id: '1', name: 'limestone', type: 'sedimentary' },
+      { id: '2', name: 'gniess', type: 'granite' },
+    ];
+
+    const res = await request(app).get('/api/v1/rocks');
+
+    expect(res.body).toEqual(expected);
+  });
+
   it('updates a rocks info by id', async () => {
     const update = { name: 'sandstone', type: 'sedimentary' };
 
